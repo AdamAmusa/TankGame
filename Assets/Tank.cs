@@ -8,12 +8,13 @@ public class Tank : MonoBehaviour
 {
     BulletFire[] bulletFire;
 
-
+    AudioManager audioManager;
     GameObject shield;
     public bool isSpray;
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         shield = transform.Find("Shield").gameObject;
         DeactivateShield();
         bulletFire = GetComponentsInChildren<BulletFire>();
@@ -57,6 +58,7 @@ public class Tank : MonoBehaviour
         {
             if (bullet.isEnemy)
             {
+                audioManager.PlayDestroy();
                 Destroy(gameObject);
                 Destroy(bullet.gameObject);
             }
@@ -71,6 +73,7 @@ public class Tank : MonoBehaviour
             }
             else
             {
+                audioManager.PlayDestroy();
                 Destroy(gameObject);
             }
             Destroy(damage.gameObject);

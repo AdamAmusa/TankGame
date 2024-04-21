@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class BulletFire : MonoBehaviour
 {
 
-    
+    AudioManager audioManager;
     [SerializeField] private Bullet bulletPrefab;
 
     [SerializeField] private Transform bulletParent;
@@ -49,7 +49,7 @@ public class BulletFire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -65,6 +65,7 @@ public class BulletFire : MonoBehaviour
         Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.direction = direction;
         Debug.Log("Fired");
+        audioManager.PlayFire();
        // bullet.GetComponent<Rigidbody2D>().velocity = transform.right * bulletSpeed;
     }
 

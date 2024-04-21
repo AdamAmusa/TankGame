@@ -9,6 +9,7 @@ public class Damage : MonoBehaviour
 
     bool canBeDestroyed = false;
     Scores scoreObject;
+    AudioManager audioManager;
     
    
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class Damage : MonoBehaviour
 
     void Start()
     {
-        
+        audioManager = FindObjectOfType<AudioManager>();
         Level.instance.addDestructable();
     }
 
@@ -44,6 +45,7 @@ public class Damage : MonoBehaviour
         if(bullet != null){
 
             if(!bullet.isEnemy){
+            audioManager.PlayDestroy();
             Destroy(this.gameObject);
             Destroy(other.gameObject);
             scoreObject = GameObject.FindObjectOfType<Scores>();
