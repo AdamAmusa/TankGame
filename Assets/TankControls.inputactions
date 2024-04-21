@@ -27,8 +27,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "d4dce453-0af6-4031-904d-d1ff1e3b5bde",
-                    "path": "<Mouse>/leftButton",
+                    "id": "d7fcc28c-a4ba-4237-a580-552bd7d002d0",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
