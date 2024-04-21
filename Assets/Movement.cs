@@ -1,19 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Start is called before the first frame update    public float speed = 5.0f;
+    [SerializeField] private PlayerInput playerInput;
+    InputAction movement;
+
+    public float speed;
+
     void Start()
     {
-        
+        movement = playerInput.actions.FindAction("Move");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = mousePosition; 
+         movePlayer();
+    }
+
+    void movePlayer(){
+        Vector2 direction = movement.ReadValue<Vector2>();
+        transform.position += new Vector3(direction.x, direction.y, 0) * speed * Time.deltaTime;
+
     }
 }
